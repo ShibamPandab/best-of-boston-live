@@ -1,0 +1,217 @@
+.footer-section {
+  width: 100%;
+  padding: 40px;
+  background-color: var(--bg-primary);
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1300px;
+  border-radius: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  padding: 48px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Top Row: Brand & Newsletter styling */
+.footer-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 3rem;
+}
+
+.footer-logo {
+  font-size: 2.2rem;
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.brand-statement {
+  max-width: 380px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.newsletter-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  border-bottom: 1px solid var(--text-primary);
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.newsletter-input {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: 300;
+  padding-right: 80px;
+}
+
+.newsletter-input:focus {
+  outline: none;
+}
+
+.newsletter-submit-btn {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s, transform 0.2s;
+  padding: 6px;
+}
+
+.newsletter-submit-btn:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Middle Row: Links Grid styling */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.footer-grid-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col-title {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.showroom-address {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.showroom-hours {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.footer-col-link {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  align-self: flex-start;
+  transition: color 0.3s;
+}
+
+.footer-col-link:hover {
+  color: var(--text-primary);
+}
+
+.social-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.social-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.social-icon-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* Bottom Row: Legal info styling */
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-light);
+  padding-top: 2rem;
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.bullet-spacer {
+  color: var(--accent);
+}
+
+/* Tablet & Mobile tweaks */
+@media (max-width: 1024px) {
+  .footer-section {
+    padding: 24px 16px;
+  }
+  .footer-inner {
+    padding: 24px !important;
+    gap: 3rem;
+  }
+  .footer-top-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+  }
+  .footer-logo {
+    font-size: 1.8rem;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .footer-bottom-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

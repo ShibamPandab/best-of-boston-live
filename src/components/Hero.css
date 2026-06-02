@@ -1,0 +1,291 @@
+.hero-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 40px 40px 40px;
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+.hero-wrapper {
+  width: 100%;
+  max-width: 1300px;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  padding: 48px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top Meta */
+.hero-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.editorial-serial {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Cinematic Title */
+.hero-title-container {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.title-row {
+  display: block;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+/* Center Grand Fashion Deck */
+.hero-center-deck {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  flex-grow: 1;
+}
+
+/* Main Card */
+.hero-main-card {
+  width: 100%;
+  max-width: 440px;
+  height: 480px;
+  position: relative;
+  border-radius: 24px;
+  overflow: visible; /* Allows the glass badge to hang out slightly */
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-card-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-model-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.4) 0%, rgba(18, 18, 18, 0) 60%);
+  pointer-events: none;
+}
+
+/* Floating badge over main card */
+.card-floating-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -40px;
+  width: 260px;
+  padding: 20px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08) !important;
+  z-index: 10;
+}
+
+.badge-cat {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 500;
+  display: block;
+}
+
+.badge-title {
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.badge-desc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.badge-link {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  display: inline-block;
+}
+
+/* Organic Floating Accent Cards */
+.hero-floating-card {
+  position: absolute;
+  width: 130px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 5;
+}
+
+.floating-left {
+  left: 10%;
+  top: 15%;
+}
+
+.floating-right {
+  right: 10%;
+  bottom: 15%;
+}
+
+.floating-card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.floating-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.floating-card-title {
+  font-size: 0.65rem;
+  font-weight: 500;
+  max-width: 75px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floating-card-price {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Bottom Meta */
+.hero-meta-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.brand-philosophy {
+  max-width: 440px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+}
+
+.scroll-arrow {
+  animation: bounceArrow 2s infinite ease-in-out;
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Tablet & Mobile Adjustments */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 100px 16px 24px 16px;
+  }
+  .hero-wrapper {
+    padding: 24px !important;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-center-deck {
+    margin: 3rem 0;
+  }
+  .hero-main-card {
+    height: 380px;
+    max-width: 320px;
+  }
+  .card-floating-badge {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -35px;
+    width: calc(100% - 32px);
+  }
+  .hero-floating-card {
+    display: none; /* Hide accent floaters on small screens for visual clarity */
+  }
+  .hero-meta-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+  .brand-philosophy {
+    max-width: 100%;
+  }
+}

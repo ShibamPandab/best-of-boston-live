@@ -1,0 +1,190 @@
+.collections-section {
+  width: 100%;
+  padding: 40px;
+  background-color: var(--bg-primary);
+}
+
+.collections-inner {
+  width: 100%;
+  max-width: 1300px;
+  border-radius: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  padding: 48px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.collections-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 24px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.section-desc {
+  max-width: 320px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Lookbook Horizontal Slider Viewport */
+.lookbook-viewport {
+  width: 100%;
+  overflow: visible; /* Allows beautiful shadows to float out */
+  cursor: grab;
+}
+
+.lookbook-container {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content; /* Critical for horizontal scrolling */
+  padding: 10px 0;
+}
+
+.lookbook-container:active {
+  cursor: grabbing;
+}
+
+/* Lookbook Card Card Design */
+.lookbook-card {
+  width: 320px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform-style: preserve-3d;
+  user-select: none;
+}
+
+.look-frame {
+  width: 100%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.look-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* Prevents dragging standard image overlay */
+}
+
+/* Overlay elements on card frames */
+.look-number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-glass);
+  font-weight: 400;
+}
+
+.look-fabric-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background-color: rgba(18, 18, 18, 0.75);
+  color: var(--bg-primary);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+/* Metadata underneath card frame */
+.look-metadata {
+  padding: 0 4px;
+  position: relative;
+}
+
+.look-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+.explore-tag {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--accent);
+  gap: 4px;
+}
+
+.tag-arrow {
+  transition: transform 0.3s ease;
+}
+
+.lookbook-card:hover .tag-arrow {
+  transform: translateX(3px);
+}
+
+/* Footer Hint */
+.lookbook-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+}
+
+.scroll-hint {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Tablet & Mobile tweaks */
+@media (max-width: 1024px) {
+  .collections-section {
+    padding: 24px 16px;
+  }
+  .collections-inner {
+    padding: 24px !important;
+  }
+  .collections-header {
+    margin-bottom: 2rem;
+  }
+  .lookbook-card {
+    width: 270px;
+  }
+  .look-frame {
+    height: 310px;
+  }
+}

@@ -1,0 +1,227 @@
+.sellers-section {
+  width: 100%;
+  padding: 40px;
+  background-color: var(--bg-primary);
+}
+
+.sellers-inner {
+  width: 100%;
+  max-width: 1300px;
+  border-radius: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  padding: 48px !important;
+}
+
+.sellers-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.sellers-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.sellers-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--accent);
+  margin-top: 1rem;
+}
+
+/* Product Responsive Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+}
+
+/* Product Card design */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: transform 0.4s var(--transition-smooth);
+}
+
+.prod-img-frame {
+  width: 100%;
+  height: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.04);
+}
+
+.prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .prod-img {
+  transform: scale(1.06);
+}
+
+/* Limited badge styling */
+.badge-limited {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+/* Actions overlay on hovers */
+.prod-actions-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 28, 0.1);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  z-index: 20;
+}
+
+.product-card:hover .prod-actions-overlay {
+  opacity: 1;
+}
+
+.action-btn {
+  width: 100%;
+  max-width: 180px;
+  height: 44px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 22px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  gap: 8px;
+  box-shadow: 0 10px 20px -5px rgba(0,0,0,0.06);
+  transform: translateY(15px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, color 0.3s;
+}
+
+.accent-action {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.product-card:hover .action-btn {
+  transform: translateY(0);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1);
+}
+
+.accent-action:hover {
+  background-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* Product Info layout */
+.prod-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.prod-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prod-category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.prod-rating {
+  font-size: 0.75rem;
+  font-weight: 500;
+  gap: 4px;
+  color: var(--text-primary);
+}
+
+.star-icon {
+  fill: var(--accent);
+  color: var(--accent);
+}
+
+.prod-name {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.prod-name:hover {
+  color: var(--accent);
+}
+
+.prod-meta-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.prod-price {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.prod-desc-excerpt {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Tablet & Mobile Tweaks */
+@media (max-width: 1024px) {
+  .sellers-section {
+    padding: 24px 16px;
+  }
+  .sellers-inner {
+    padding: 24px !important;
+  }
+  .sellers-header {
+    margin-bottom: 2.5rem;
+  }
+  .prod-img-frame {
+    height: 320px;
+  }
+  /* Disable hover action overlay on touchscreens */
+  .prod-actions-overlay {
+    display: none !important;
+  }
+}
