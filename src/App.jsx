@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AnimatePresence } from 'framer-motion';
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -163,13 +164,15 @@ export default function App() {
       />
 
       {/* High-fidelity custom specifications drawer */}
-      {selectedProduct && (
-        <ProductDetails 
-          product={selectedProduct} 
-          onClose={() => setSelectedProduct(null)} 
-          onAddToCart={handleAddToCart}
-        />
-      )}
+      <AnimatePresence>
+        {selectedProduct && (
+          <ProductDetails 
+            product={selectedProduct} 
+            onClose={() => setSelectedProduct(null)} 
+            onAddToCart={handleAddToCart}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

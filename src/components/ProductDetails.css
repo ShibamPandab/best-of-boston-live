@@ -1,14 +1,16 @@
+/* --- Backdrop Overlay & Centering Wrapper --- */
 .detail-modal-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1005;
+  z-index: 10005; /* Stay above header, mini-cart, and all sections */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
+  overflow: hidden;
 }
 
 .detail-backdrop {
@@ -17,42 +19,80 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(26, 26, 28, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.45); /* High-contrast rich dark overlay */
+  backdrop-filter: blur(20px); /* Premium Zara/Apple strong backdrop blur */
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1;
 }
 
+/* --- High-Fidelity Glassmorphism Modal --- */
 .detail-modal-container {
   width: 100%;
   max-width: 1100px;
   max-height: calc(100vh - 80px);
   position: relative;
   border-radius: 32px !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   padding: 48px !important;
   overflow-y: auto;
   z-index: 10;
+  box-shadow: 
+    0 30px 70px -15px rgba(0, 0, 0, 0.25),
+    0 10px 30px -10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  
+  /* Smooth inertia scroll on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
+/* Custom premium scrollbar for the modal */
+.detail-modal-container::-webkit-scrollbar {
+  width: 5px;
+}
+.detail-modal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.detail-modal-container::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 10px;
+}
+
+/* --- Luxury Circular Close Button --- */
 .detail-close-btn {
   position: absolute;
   top: 24px;
   right: 24px;
-  opacity: 0.6;
-  transition: opacity 0.3s, transform 0.2s;
-  padding: 4px;
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  color: var(--text-primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: none !important; /* Hide default mouse so elegant custom cursor shows */
+  z-index: 100;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .detail-close-btn:hover {
-  opacity: 1;
-  transform: rotate(90deg);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  transform: rotate(90deg) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Two-column layout */
+/* --- Two-Column Structural Layout --- */
 .detail-layout {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 5rem;
 }
 
 /* Left Panel: Visuals */
@@ -64,66 +104,73 @@
 
 .badge-cat-tag {
   font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .detail-img-frame {
   width: 100%;
-  height: 480px;
+  height: 520px;
   border-radius: 24px;
   overflow: hidden;
   background-color: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 15px 40px -15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(18, 18, 18, 0.04);
+  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.08);
 }
 
 .detail-main-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-img-frame:hover .detail-main-img {
+  transform: scale(1.03);
 }
 
 .visual-assurance {
-  gap: 2rem;
+  gap: 2.5rem;
   border-top: 1px solid var(--border-light);
-  padding-top: 16px;
+  padding-top: 20px;
+  margin-top: 8px;
 }
 
 .assurance-node {
   font-size: 0.75rem;
   color: var(--text-secondary);
-  gap: 6px;
+  gap: 8px;
+  letter-spacing: 0.02em;
 }
 
 .assurance-icon {
   color: var(--accent);
 }
 
-/* Right Panel: Spec */
+/* Right Panel: Specifications */
 .detail-spec-panel {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  justify-content: space-between;
+  gap: 2.2rem;
 }
 
 .detail-title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   line-height: 1.1;
   margin-top: 6px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .detail-ratings-row {
   justify-content: flex-start;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .stars-row {
-  gap: 2px;
+  gap: 3px;
 }
 
 .star-icon-filled {
@@ -134,55 +181,66 @@
 .reviews-summary {
   font-size: 0.75rem;
   color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
 .detail-price-tag {
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-top: 16px;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-top: 18px;
   color: var(--text-primary);
+  font-family: var(--font-sans);
 }
 
 .detail-desc {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-top: 12px;
+  line-height: 1.7;
+  margin-top: 14px;
 }
 
-/* Selector modules (Swatches and Sizing) */
+/* Selection Swatches & Sizing */
 .selector-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .selector-label {
   font-size: 0.8rem;
   color: var(--text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .selector-label strong {
   font-weight: 600;
+  color: var(--accent);
+  margin-left: 4px;
 }
 
 .swatches-container {
   display: flex;
-  gap: 12px;
+  gap: 14px;
 }
 
 .swatch-node {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 1px solid var(--border-light);
   position: relative;
-  transition: transform 0.2s var(--transition-smooth);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.swatch-node:hover {
+  transform: scale(1.1);
 }
 
 .swatch-active {
-  transform: scale(1.15);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .swatch-active::after {
@@ -194,6 +252,12 @@
   bottom: -4px;
   border-radius: 50%;
   border: 1px solid var(--text-primary);
+  animation: swatchSwell 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes swatchSwell {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .sizes-container {
@@ -203,112 +267,194 @@
 }
 
 .size-node {
-  height: 40px;
-  min-width: 50px;
-  padding: 0 12px;
+  height: 44px;
+  min-width: 56px;
+  padding: 0 16px;
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   background-color: transparent;
+  color: var(--text-primary);
 }
 
 .size-node:hover {
   border-color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 .size-active {
-  background-color: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background-color: var(--text-primary) !important;
+  color: var(--bg-primary) !important;
+  border-color: var(--text-primary) !important;
+  box-shadow: 0 4px 12px rgba(18, 18, 18, 0.15);
 }
 
-/* Technical Specification List */
+/* Garment Architecture Technical Specifications */
 .technical-specs {
   border-top: 1px solid var(--border-light);
-  padding-top: 16px;
+  padding-top: 20px;
 }
 
 .tech-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.05em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .tech-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tech-list li {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   position: relative;
-  padding-left: 12px;
+  padding-left: 14px;
+  line-height: 1.5;
 }
 
 .tech-list li::before {
   content: '▪';
   position: absolute;
   left: 0;
-  top: -1px;
+  top: 0px;
   color: var(--accent);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }
 
-/* High-Impact CTA button */
+/* CTA Add Button */
 .add-to-basket-btn {
   width: 100%;
-  height: 56px;
+  height: 58px;
   background-color: var(--text-primary);
   color: var(--bg-primary);
-  border-radius: 28px;
+  border-radius: 29px;
   font-size: 0.85rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   font-weight: 500;
-  transition: background-color 0.4s ease, transform 0.2s;
-  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 12px;
+  border: 1px solid var(--text-primary);
 }
 
 .add-to-basket-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 25px -10px rgba(18, 18, 18, 0.25);
+  background-color: #000000;
+}
+
+.add-to-basket-btn:active {
+  transform: translateY(0);
 }
 
 .btn-basket-icon {
-  transition: transform 0.3s;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .add-to-basket-btn:hover .btn-basket-icon {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(-5deg);
 }
 
-/* Success transition state */
+/* Emerald Success Feedback Animation */
 .btn-success {
-  background-color: #2e7d32 !important; /* Premium rich emerald success */
-  color: white !important;
+  background-color: #1b5e20 !important;
+  color: #ffffff !important;
+  border-color: #1b5e20 !important;
+  box-shadow: 0 8px 20px rgba(27, 94, 32, 0.2) !important;
 }
 
-/* Mobile responsive details */
+/* --- Premium Mobile Responsive Styling --- */
 @media (max-width: 1024px) {
   .detail-modal-wrapper {
-    padding: 16px;
+    padding: 24px;
   }
+  
   .detail-modal-container {
-    padding: 24px !important;
-    border-radius: 24px !important;
+    padding: 36px !important;
+    max-height: calc(100vh - 48px);
   }
+  
   .detail-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
+  
   .detail-img-frame {
-    height: 320px;
+    height: 380px;
   }
+}
+
+@media (max-width: 768px) {
+  .detail-modal-wrapper {
+    padding: 12px;
+    align-items: center; /* Center modal perfectly vertically */
+    justify-content: center; /* Center modal perfectly horizontally */
+  }
+  
+  .detail-modal-container {
+    padding: 32px 20px 24px 20px !important;
+    border-radius: 28px !important;
+    max-height: calc(100vh - 24px); /* Optimized screen space */
+    width: 100%;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.75) !important; /* Richer blur contrast */
+    backdrop-filter: blur(40px) !important;
+    -webkit-backdrop-filter: blur(40px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  /* Float close button so it stays fixed and highly contrasty during mobile scroll */
+  .detail-close-btn {
+    position: fixed !important;
+    top: 24px !important;
+    right: 24px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    width: 44px !important;
+    height: 44px !important;
+    cursor: pointer !important;
+  }
+  
+  .detail-layout {
+    gap: 1.8rem;
+  }
+  
+  .detail-img-frame {
+    height: 280px; /* High-end compact height */
+    border-radius: 20px;
+  }
+  
   .detail-title {
     font-size: 1.8rem;
+  }
+  
+  .detail-price-tag {
+    font-size: 1.6rem;
+    margin-top: 10px;
+  }
+  
+  .swatch-node {
+    width: 34px; /* Enhanced mobile tap target */
+    height: 34px;
+  }
+  
+  .size-node {
+    height: 44px; /* Larger mobile tap targets */
+    min-width: 52px;
+  }
+  
+  .visual-assurance {
+    flex-wrap: wrap;
+    gap: 1.2rem 2rem;
+    padding-top: 16px;
   }
 }
