@@ -24,7 +24,7 @@ A modern restaurant and food experience website showcasing elegant design, respo
 
 ## Preview
 
-![Project Preview](./screenshots/boston-preview.png)
+![Project Preview](<img width="1911" height="868" alt="Screenshot 2026-06-03 200625" src="https://github.com/user-attachments/assets/43c26121-25e8-4096-b333-5ebafca17910" />)
 
 ## Project Goal
 
