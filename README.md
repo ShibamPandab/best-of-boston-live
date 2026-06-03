@@ -1,20 +1,39 @@
-<<<<<<< HEAD
-# React + Vite
+# Best of Boston
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern restaurant and food experience website showcasing elegant design, responsiveness, and user-friendly navigation.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🌐 Live Site: [View Project](https://best-of-boston-live.vercel.app/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive Design
+- Modern UI/UX
+- Mobile Optimization
+- Interactive Sections
+- Fast Performance
+- Clean Layout
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Best-of-Boston
->>>>>>> 4be08602094493a282f1aad36fcea4c9450f9dd6
+- HTML5
+- CSS3
+- JavaScript
+- Vercel
+
+## Preview
+
+![Project Preview](./screenshots/boston-preview.png)
+
+## Project Goal
+
+Built to strengthen frontend development skills and create a professional restaurant-style web experience.
+
+## Author
+
+**Shibam Pandab**
+
+- Portfolio: [YOUR_PORTFOLIO_LINK](https://shibam-portfolio-omega.vercel.app/)
+- LinkedIn: [YOUR_LINKEDIN_LINK](https://linkedin.com/in/shibam-pandab)
+- GitHub: [YOUR_GITHUB_LINK](https://github.com/ShibamPandab)
