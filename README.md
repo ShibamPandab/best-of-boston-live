@@ -36,6 +36,6 @@ Built to strengthen frontend development skills and create a professional restau
 
 **Shibam Pandab**
 
-- Portfolio: [Portfolio](https://shibam-portfolio-omega.vercel.app/)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/shibam-pandab)
-- GitHub: [GitHub](https://github.com/ShibamPandab)
+- Portfolio: [P](https://shibam-portfolio-omega.vercel.app/)
+- LinkedIn: [L](https://linkedin.com/in/shibam-pandab)
+- GitHub: [G](https://github.com/ShibamPandab)
