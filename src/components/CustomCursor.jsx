@@ -3,12 +3,12 @@ import './CustomCursor.css';
 
 export default function CustomCursor() {
   const cursorRef = useRef(null);
-  
+
   // Track mouse coordinates (instant values)
   const mouse = useRef({ x: 0, y: 0 });
   // Interpolated cursor coordinates for smooth luxury inertia
   const cursor = useRef({ x: 0, y: 0 });
-  
+
   const [text, setText] = useState('');
   const [clicked, setClicked] = useState(false);
   const [hidden, setHidden] = useState(true);
@@ -39,7 +39,7 @@ export default function CustomCursor() {
     // Global Hover Watcher for text labels and scaling
     const handleMouseOver = (e) => {
       const target = e.target.closest('a, button, select, input, [role="button"], .product-card, .lookbook-card');
-      
+
       if (target) {
         // 1. Text Labels
         if (target.classList.contains('product-card') || target.closest('.product-card')) {
@@ -82,7 +82,7 @@ export default function CustomCursor() {
       }
 
       // Base interpolation factor for premium luxury smoothness
-      const ease = 0.22; 
+      const ease = 0.22;
       cursor.current.x += (mouse.current.x - cursor.current.x) * ease;
       cursor.current.y += (mouse.current.y - cursor.current.y) * ease;
 
@@ -110,9 +110,8 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className={`elegant-custom-cursor ${clicked ? 'cursor-clicked' : ''} ${
-        hovered ? 'cursor-hovered' : ''
-      } ${text ? 'cursor-has-label' : ''}`}
+      className={`elegant-custom-cursor ${clicked ? 'cursor-clicked' : ''} ${hovered ? 'cursor-hovered' : ''
+        } ${text ? 'cursor-has-label' : ''}`}
     >
       {text && <span className="cursor-label">{text}</span>}
     </div>

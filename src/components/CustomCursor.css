@@ -5,7 +5,10 @@
   left: 0;
   width: 18px;
   height: 18px;
-  background-color: #000000;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999; /* Ensure it stays above header, modal overlays, and drawers */
@@ -14,15 +17,17 @@
   align-items: center;
   transform: translate3d(0, 0, 0) translate(-50%, -50%);
   
-  /* Always visible on white backgrounds: pure black fill.
-     Always visible on dark backgrounds/images: ultra-subtle white outer ring + soft depth shadow */
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 3px 8px rgba(0, 0, 0, 0.12);
+  /* Soft ambient glass shadow & sub-pixel top edge refraction */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   
   /* Smooth transition for size shifts */
   transition: 
     width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: width, height, transform;
 }
@@ -31,8 +36,11 @@
 .cursor-hovered {
   width: 25px;
   height: 25px;
-  background-color: #000000;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45), 0 5px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.22); /* Sligthly increased brightness */
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 /* --- Click Compression State (Subtle tactile shrink) --- */
@@ -46,19 +54,22 @@
 .cursor-has-label {
   width: 46px;
   height: 46px;
-  background-color: #000000;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 8px 18px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.22); /* Frosted lens background */
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 /* --- Subtle Minimal View / Drag Typography --- */
 .cursor-label {
   font-family: var(--font-sans);
   font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #111111;
   text-transform: uppercase;
-  margin-left: 0.16em; /* Compensate for letter-spacing to center text precisely */
+  margin-left: 0.02em; /* Compensate for letter-spacing to center text precisely */
   opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.22s ease, transform 0.22s ease;

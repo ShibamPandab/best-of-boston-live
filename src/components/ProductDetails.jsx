@@ -33,6 +33,17 @@ export default function ProductDetails({ product, onClose, onAddToCart }) {
 
   if (!product) return null;
 
+  const handleClose = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    try {
+      window.getSelection()?.removeAllRanges();
+    } catch (err) {}
+    onClose();
+  };
+
   const handleAddToCart = () => {
     const colorObject = product.colors.find(c => c.hex === selectedColor) || product.colors[0];
     onAddToCart({
@@ -58,7 +69,8 @@ export default function ProductDetails({ product, onClose, onAddToCart }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
-        onClick={onClose}
+        onClick={handleClose}
+        onMouseDown={(e) => e.preventDefault()}
       />
 
       {/* Dynamic Details Overlay Modal with premium Apple-style transition */}
@@ -70,7 +82,12 @@ export default function ProductDetails({ product, onClose, onAddToCart }) {
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Floating high-contrast close button */}
-        <button className="detail-close-btn flex-center" onClick={onClose} aria-label="Close details">
+        <button 
+          className="detail-close-btn flex-center" 
+          onClick={handleClose} 
+          onMouseDown={(e) => e.preventDefault()}
+          aria-label="Close details"
+        >
           <X size={20} />
         </button>
 

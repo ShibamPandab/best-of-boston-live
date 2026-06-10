@@ -11,6 +11,8 @@
   align-items: center;
   padding: 40px;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .detail-backdrop {
@@ -19,10 +21,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.45); /* High-contrast rich dark overlay */
-  backdrop-filter: blur(20px); /* Premium Zara/Apple strong backdrop blur */
-  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(18, 16, 15, 0.55); /* Warm rich dark architectural overlay */
+  backdrop-filter: blur(28px); /* Premium Zara/Apple strong backdrop blur */
+  -webkit-backdrop-filter: blur(28px);
   z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* --- High-Fidelity Glassmorphism Modal --- */
@@ -31,18 +35,21 @@
   max-width: 1100px;
   max-height: calc(100vh - 80px);
   position: relative;
-  border-radius: 32px !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(30px) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
+  border-radius: 24px !important; /* Soft refined Apple-style border radius */
+  border: 1px solid rgba(255, 255, 255, 0.45) !important; /* Thick premium glass edge */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 100%) !important; /* Frosted glass gradient */
+  backdrop-filter: blur(45px) !important; /* Apple / Arc Browser style strong frosting blur */
+  -webkit-backdrop-filter: blur(45px) !important;
   padding: 48px !important;
   overflow-y: auto;
   z-index: 10;
   box-shadow: 
-    0 30px 70px -15px rgba(0, 0, 0, 0.25),
-    0 10px 30px -10px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    0 0 1px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    0 20px 48px rgba(0, 0, 0, 0.12),
+    0 40px 80px rgba(0, 0, 0, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.03) !important; /* Luxury sub-pixel edge reflections */
   
   /* Smooth inertia scroll on iOS */
   -webkit-overflow-scrolling: touch;
@@ -67,8 +74,10 @@
   right: 24px;
   width: 44px;
   height: 44px;
-  background: #ffffff;
-  border: 1px solid rgba(18, 18, 18, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%); /* Translucent glass button gradient */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   color: var(--text-primary);
   border-radius: 50%;
   display: flex;
@@ -76,8 +85,12 @@
   align-items: center;
   cursor: none !important; /* Hide default mouse so elegant custom cursor shows */
   z-index: 100;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .detail-close-btn:hover {
@@ -85,14 +98,84 @@
   color: var(--bg-primary);
   border-color: var(--text-primary);
   transform: rotate(90deg) scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Make UI elements non-selectable for a native feel */
+.badge-cat-tag, 
+.luxury-tag, 
+.detail-title, 
+.detail-price-tag, 
+.selector-label, 
+.tech-title, 
+.tech-list li::before, 
+.add-to-basket-btn {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ============================================================
+   READABILITY ANCHOR — Glass Background Isolation
+   The backdrop-filter blur & transparency applies ONLY to the 
+   .detail-modal-container background layer. All descendant text
+   elements are pinned to full opacity + absolute WCAG contrast 
+   colors, so they are never affected by the glass translucency.
+   ============================================================ */
+
+/* Primary text: headings, price, labels, title */
+.detail-modal-container .detail-title,
+.detail-modal-container .detail-price-tag,
+.detail-modal-container .selector-label,
+.detail-modal-container .tech-title,
+.detail-modal-container .luxury-tag,
+.detail-modal-container .badge-cat-tag {
+  color: #111111 !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Secondary text: description, reviews, assurance nodes, spec list */
+.detail-modal-container .detail-desc,
+.detail-modal-container .reviews-summary,
+.detail-modal-container .assurance-node,
+.detail-modal-container .tech-list li {
+  color: #3a3a3a !important;  /* Darkened from #656565 for WCAG AA on glass */
+  opacity: 1 !important;
+  -webkit-text-fill-color: #3a3a3a !important;
+}
+
+/* Accent text: selected color name, star labels, spec bullet points */
+.detail-modal-container .selector-label strong,
+.detail-modal-container .tech-list li::before,
+.detail-modal-container .assurance-icon {
+  opacity: 1 !important;
+}
+
+/* Size selector: ensure full contrast on glass background */
+.detail-modal-container .size-node {
+  color: #111111 !important;
+  border-color: rgba(17, 17, 17, 0.2) !important;
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.5) !important; /* Semi-opaque to lift off glass bg */
+}
+
+.detail-modal-container .size-node:hover {
+  border-color: #111111 !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Divider lines: slightly more visible on glass */
+.detail-modal-container .visual-assurance,
+.detail-modal-container .technical-specs {
+  border-top-color: rgba(17, 17, 17, 0.12) !important;
+}
+
 
 /* --- Two-Column Structural Layout --- */
 .detail-layout {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 5rem;
+  gap: 4rem; /* Balanced premium grid gap */
 }
 
 /* Left Panel: Visuals */
@@ -398,15 +481,18 @@
   
   .detail-modal-container {
     padding: 32px 20px 24px 20px !important;
-    border-radius: 28px !important;
+    border-radius: 20px !important; /* Soft, refined mobile radius */
     max-height: calc(100vh - 24px); /* Optimized screen space */
     width: 100%;
     margin: 0;
-    background: rgba(255, 255, 255, 0.75) !important; /* Richer blur contrast */
-    backdrop-filter: blur(40px) !important;
-    -webkit-backdrop-filter: blur(40px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
+    background: rgba(255, 255, 255, 0.45) !important; /* Frosted glass appearance */
+    backdrop-filter: blur(45px) !important;
+    -webkit-backdrop-filter: blur(45px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      0 0 1px rgba(0, 0, 0, 0.1),
+      0 12px 36px rgba(0, 0, 0, 0.15),
+      inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
   }
   
   /* Float close button so it stays fixed and highly contrasty during mobile scroll */
@@ -414,11 +500,15 @@
     position: fixed !important;
     top: 24px !important;
     right: 24px !important;
-    background: #ffffff !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
     color: #000000 !important;
     opacity: 1 !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
     width: 44px !important;
     height: 44px !important;
     cursor: pointer !important;
