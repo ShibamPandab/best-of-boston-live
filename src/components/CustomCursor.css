@@ -1,14 +1,20 @@
-/* --- Unified Elegant Custom Cursor --- */
+/* =============================================================
+   ADAPTIVE LUXURY CURSOR — mix-blend-mode: difference system
+   White fill auto-inverts: charcoal on light, white on dark/images.
+   Industry technique: Apple.com, high-end fashion / portfolio sites.
+   Label state exits blend-mode for frosted glass legibility.
+   ============================================================= */
+
+/* --- Base cursor: adaptive auto-inverting dot --- */
 .elegant-custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
   width: 18px;
   height: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  /* White fill: inverts to near-black on cream/white, stays white on dark/images */
+  background: #ffffff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999; /* Ensure it stays above header, modal overlays, and drawers */
@@ -16,31 +22,27 @@
   justify-content: center;
   align-items: center;
   transform: translate3d(0, 0, 0) translate(-50%, -50%);
-  
-  /* Soft ambient glass shadow & sub-pixel top edge refraction */
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  
-  /* Smooth transition for size shifts */
-  transition: 
+
+  /* THE ADAPTIVE ENGINE: auto-adapts cursor color to any background */
+  mix-blend-mode: difference;
+
+  /* No border/shadow in base state — clean minimal adaptive dot */
+  box-shadow: none;
+  border: none;
+
+  /* Smooth transition for size shifts only — no color/blend transitions */
+  transition:
     width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: width, height, transform;
 }
 
-/* --- Interactive Hover State (Scale to 1.4x -> 18px * 1.4 = 25px) --- */
+/* --- Interactive Hover State (buttons, links — 25px swell) --- */
 .cursor-hovered {
   width: 25px;
   height: 25px;
-  background: rgba(255, 255, 255, 0.22); /* Sligthly increased brightness */
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow:
-    0 10px 36px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  /* Stays in mix-blend-mode difference, just larger */
 }
 
 /* --- Click Compression State (Subtle tactile shrink) --- */
@@ -50,26 +52,40 @@
   transition: width 0.1s ease, height 0.1s ease;
 }
 
-/* --- Card Hover State (Swell for subtle label) --- */
+/* --- Card Hover State: VIEW / DRAG label pill ---
+   Exits mix-blend-mode so label text is always legible.
+   Frosted glass glow — elegant on both light and image areas. */
 .cursor-has-label {
-  width: 46px;
-  height: 46px;
-  background: rgba(255, 255, 255, 0.22); /* Frosted lens background */
-  border-color: rgba(255, 255, 255, 0.45);
+  width: 56px;
+  height: 56px;
+
+  /* Exit adaptive mode for label legibility */
+  mix-blend-mode: normal;
+
+  /* Frosted glass lens — luxury glow on image/dark areas */
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 0 0 0.5px rgba(0, 0, 0, 0.06),
+    0 8px 28px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30);
 }
 
-/* --- Subtle Minimal View / Drag Typography --- */
+/* --- Subtle Minimal VIEW / DRAG Typography --- */
 .cursor-label {
   font-family: var(--font-sans);
   font-size: 8px;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.12em;
+  /* Dark on light card areas, uses text-shadow for legibility on images */
   color: #111111;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 1px 2px rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
-  margin-left: 0.02em; /* Compensate for letter-spacing to center text precisely */
+  margin-left: 0.12em; /* Compensate for letter-spacing to center text precisely */
   opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.22s ease, transform 0.22s ease;
