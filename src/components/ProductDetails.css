@@ -21,9 +21,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(18, 16, 15, 0.55); /* Warm rich dark architectural overlay */
-  backdrop-filter: blur(28px); /* Premium Zara/Apple strong backdrop blur */
-  -webkit-backdrop-filter: blur(28px);
+  /* Near-opaque warm dark veil — kills background visibility entirely */
+  background-color: rgba(14, 12, 11, 0.78);
+  backdrop-filter: blur(40px) saturate(120%); /* Velvet-thick background crush */
+  -webkit-backdrop-filter: blur(40px) saturate(120%);
   z-index: 1;
   user-select: none;
   -webkit-user-select: none;
@@ -35,23 +36,35 @@
   max-width: 1100px;
   max-height: calc(100vh - 80px);
   position: relative;
-  border-radius: 24px !important; /* Soft refined Apple-style border radius */
-  border: 1px solid rgba(255, 255, 255, 0.45) !important; /* Thick premium glass edge */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 100%) !important; /* Frosted glass gradient */
-  backdrop-filter: blur(45px) !important; /* Apple / Arc Browser style strong frosting blur */
-  -webkit-backdrop-filter: blur(45px) !important;
+  border-radius: 24px !important;
+
+  /* Premium thick frosted glass — elevated from a see-through wash to a dominant panel */
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(250, 247, 244, 0.80) 40%,
+    rgba(244, 241, 237, 0.74) 100%
+  ) !important;
+  backdrop-filter: blur(64px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(64px) saturate(180%) !important;
+
+  /* Crisp high-refraction glass edge */
+  border: 1px solid rgba(255, 255, 255, 0.80) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.40) !important;
+  border-right-color: rgba(255, 255, 255, 0.40) !important;
+
   padding: 48px !important;
   overflow-y: auto;
   z-index: 10;
-  box-shadow: 
-    0 0 1px rgba(0, 0, 0, 0.1),
-    0 4px 12px rgba(0, 0, 0, 0.05),
-    0 20px 48px rgba(0, 0, 0, 0.12),
-    0 40px 80px rgba(0, 0, 0, 0.18),
-    inset 0 1px 2px rgba(255, 255, 255, 0.55),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.03) !important; /* Luxury sub-pixel edge reflections */
-  
-  /* Smooth inertia scroll on iOS */
+
+  /* Multi-layer architectural shadow for true depth */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,  /* inner highlight edge */
+    0 2px 0 rgba(255, 255, 255, 0.95) inset,    /* top surface gloss */
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 20px 48px rgba(0, 0, 0, 0.20),
+    0 48px 96px rgba(0, 0, 0, 0.28) !important;
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -240,10 +253,13 @@
 }
 
 .detail-title {
-  font-size: 2.4rem;
-  line-height: 1.1;
-  margin-top: 6px;
-  letter-spacing: 0.01em;
+  font-size: 2.5rem;
+  line-height: 1.05;
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: #111111;
 }
 
 .detail-ratings-row {
@@ -262,24 +278,27 @@
 }
 
 .reviews-summary {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
+  font-size: 0.72rem;
+  color: #555555;
+  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 .detail-price-tag {
   font-size: 2rem;
-  font-weight: 400;
-  margin-top: 18px;
-  color: var(--text-primary);
+  font-weight: 300;
+  margin-top: 16px;
+  color: #111111;
   font-family: var(--font-sans);
+  letter-spacing: 0.04em;
 }
 
 .detail-desc {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-top: 14px;
+  font-size: 0.88rem;
+  color: #4a4a4a;
+  line-height: 1.75;
+  margin-top: 16px;
+  letter-spacing: 0.02em;
 }
 
 /* Selection Swatches & Sizing */
@@ -290,10 +309,11 @@
 }
 
 .selector-label {
-  font-size: 0.8rem;
-  color: var(--text-primary);
-  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  color: #111111;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .selector-label strong {
@@ -381,9 +401,13 @@
 }
 
 .tech-title {
-  font-size: 1.15rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: #111111;
+  margin-bottom: 14px;
 }
 
 .tech-list {
@@ -394,11 +418,12 @@
 }
 
 .tech-list li {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 0.78rem;
+  color: #4a4a4a;
   position: relative;
   padding-left: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
 }
 
 .tech-list li::before {
@@ -417,9 +442,10 @@
   background-color: var(--text-primary);
   color: var(--bg-primary);
   border-radius: 29px;
-  font-size: 0.85rem;
-  letter-spacing: 0.22em;
-  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  text-transform: uppercase;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   gap: 12px;
   border: 1px solid var(--text-primary);
@@ -451,100 +477,402 @@
   box-shadow: 0 8px 20px rgba(27, 94, 32, 0.2) !important;
 }
 
-/* --- Premium Mobile Responsive Styling --- */
+/* ============================================================
+   RESPONSIVE SYSTEM — Product Modal
+   Breakpoints: 1440 (base) → 1024 → 768 → 480 → 390/320
+   ============================================================ */
+
+/* --- 1024px: Tablet Landscape — keep two-column, tighten spacing --- */
 @media (max-width: 1024px) {
   .detail-modal-wrapper {
     padding: 24px;
   }
-  
+
   .detail-modal-container {
-    padding: 36px !important;
+    padding: 40px !important;
     max-height: calc(100vh - 48px);
   }
-  
+
   .detail-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
   }
-  
+
   .detail-img-frame {
-    height: 380px;
+    height: 420px;
+  }
+
+  .detail-title {
+    font-size: 2.1rem;
+  }
+
+  .detail-price-tag {
+    font-size: 1.75rem;
   }
 }
 
+/* --- 768px: Tablet Portrait — single column, mobile-first layout --- */
 @media (max-width: 768px) {
   .detail-modal-wrapper {
-    padding: 12px;
-    align-items: center; /* Center modal perfectly vertically */
-    justify-content: center; /* Center modal perfectly horizontally */
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 16px;
   }
-  
+
   .detail-modal-container {
-    padding: 32px 20px 24px 20px !important;
-    border-radius: 20px !important; /* Soft, refined mobile radius */
-    max-height: calc(100vh - 24px); /* Optimized screen space */
+    /* Keep identical glass quality to desktop */
+    background: linear-gradient(
+      140deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(250, 247, 244, 0.82) 40%,
+      rgba(244, 241, 237, 0.76) 100%
+    ) !important;
+    backdrop-filter: blur(60px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.78) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.38) !important;
+    border-right-color: rgba(255, 255, 255, 0.38) !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+      0 2px 0 rgba(255, 255, 255, 0.95) inset,
+      0 12px 36px rgba(0, 0, 0, 0.20),
+      0 32px 64px rgba(0, 0, 0, 0.26) !important;
+
+    padding: 28px 24px 32px 24px !important;
+    border-radius: 22px !important;
+    max-height: calc(100vh - 32px);
     width: 100%;
     margin: 0;
-    background: rgba(255, 255, 255, 0.45) !important; /* Frosted glass appearance */
-    backdrop-filter: blur(45px) !important;
-    -webkit-backdrop-filter: blur(45px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 
-      0 0 1px rgba(0, 0, 0, 0.1),
-      0 12px 36px rgba(0, 0, 0, 0.15),
-      inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  
-  /* Float close button so it stays fixed and highly contrasty during mobile scroll */
+
+  /* Fixed close button — stays at top during scroll */
   .detail-close-btn {
     position: fixed !important;
-    top: 24px !important;
-    right: 24px !important;
-    background: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    color: #000000 !important;
-    opacity: 1 !important;
-    box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.12),
-      inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    width: 44px !important;
-    height: 44px !important;
+    top: 28px !important;
+    right: 28px !important;
+    width: 42px !important;
+    height: 42px !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    color: #111111 !important;
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.9) inset,
+      0 8px 20px rgba(0, 0, 0, 0.15) !important;
     cursor: pointer !important;
   }
-  
+
   .detail-layout {
-    gap: 1.8rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  
+
   .detail-img-frame {
-    height: 280px; /* High-end compact height */
-    border-radius: 20px;
+    height: 300px;
+    border-radius: 18px;
   }
-  
+
+  .detail-visual-panel {
+    gap: 1.25rem;
+  }
+
+  .badge-cat-tag {
+    font-size: 0.68rem;
+  }
+
+  .detail-spec-panel {
+    gap: 1.75rem;
+  }
+
   .detail-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    line-height: 1.08;
   }
-  
+
+  .detail-ratings-row {
+    margin-top: 8px;
+    gap: 10px;
+  }
+
   .detail-price-tag {
-    font-size: 1.6rem;
-    margin-top: 10px;
+    font-size: 1.65rem;
+    margin-top: 12px;
   }
-  
+
+  .detail-desc {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+
+  .selector-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
   .swatch-node {
-    width: 34px; /* Enhanced mobile tap target */
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
-  
+
   .size-node {
-    height: 44px; /* Larger mobile tap targets */
-    min-width: 52px;
+    height: 48px;
+    min-width: 56px;
+    font-size: 0.78rem;
+    border-radius: 14px;
   }
-  
+
+  .add-to-basket-btn {
+    height: 60px;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+  }
+
+  .tech-title {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .tech-list li {
+    font-size: 0.76rem;
+    line-height: 1.65;
+  }
+
   .visual-assurance {
     flex-wrap: wrap;
-    gap: 1.2rem 2rem;
-    padding-top: 16px;
+    gap: 1rem 2rem;
+    padding-top: 14px;
+  }
+
+  .assurance-node {
+    font-size: 0.7rem;
+  }
+}
+
+/* --- 480px: Large Mobile --- */
+@media (max-width: 480px) {
+  .detail-modal-wrapper {
+    padding: 12px;
+    padding-top: 12px;
+  }
+
+  .detail-modal-container {
+    padding: 24px 18px 28px 18px !important;
+    border-radius: 20px !important;
+    max-height: calc(100vh - 24px);
+  }
+
+  .detail-close-btn {
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .detail-img-frame {
+    height: 260px;
+    border-radius: 16px;
+  }
+
+  .detail-title {
+    font-size: 1.75rem;
+  }
+
+  .detail-price-tag {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .detail-desc {
+    font-size: 0.82rem;
+    margin-top: 10px;
+  }
+
+  .size-node {
+    height: 48px;
+    min-width: 52px;
+    padding: 0 14px;
+  }
+
+  .swatches-container {
+    gap: 12px;
+  }
+
+  .add-to-basket-btn {
+    height: 58px;
+    font-size: 0.73rem;
+    letter-spacing: 0.22em;
+  }
+
+  .tech-list {
+    gap: 7px;
+  }
+
+  .tech-list li {
+    font-size: 0.74rem;
+  }
+
+  .detail-spec-panel {
+    gap: 1.5rem;
+  }
+}
+
+/* --- 390px: iPhone Pro — tightest mobile touch targets --- */
+@media (max-width: 390px) {
+  .detail-modal-wrapper {
+    padding: 8px;
+    padding-top: 8px;
+  }
+
+  .detail-modal-container {
+    padding: 22px 16px 26px 16px !important;
+    border-radius: 18px !important;
+    max-height: calc(100vh - 16px);
+  }
+
+  .detail-close-btn {
+    top: 16px !important;
+    right: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .detail-img-frame {
+    height: 240px;
+    border-radius: 14px;
+  }
+
+  .detail-title {
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .detail-price-tag {
+    font-size: 1.4rem;
+  }
+
+  .detail-desc {
+    font-size: 0.8rem;
+    line-height: 1.68;
+  }
+
+  .size-node {
+    height: 46px;
+    min-width: 50px;
+    padding: 0 12px;
+    font-size: 0.75rem;
+  }
+
+  .swatch-node {
+    width: 34px;
+    height: 34px;
+  }
+
+  .add-to-basket-btn {
+    height: 56px;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  .selector-group {
+    gap: 10px;
+  }
+
+  .detail-spec-panel {
+    gap: 1.25rem;
+  }
+}
+
+/* --- 320px: Minimum Guarantee — no overflow, no clipping --- */
+@media (max-width: 320px) {
+  .detail-modal-wrapper {
+    padding: 6px;
+    padding-top: 6px;
+  }
+
+  .detail-modal-container {
+    padding: 20px 14px 24px 14px !important;
+    border-radius: 16px !important;
+    max-height: calc(100vh - 12px);
+  }
+
+  .detail-close-btn {
+    top: 14px !important;
+    right: 14px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .detail-img-frame {
+    height: 210px;
+    border-radius: 12px;
+  }
+
+  .detail-title {
+    font-size: 1.45rem;
+    margin-top: 4px;
+  }
+
+  .badge-cat-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .detail-price-tag {
+    font-size: 1.3rem;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .detail-desc {
+    font-size: 0.78rem;
+    margin-top: 8px;
+    line-height: 1.65;
+  }
+
+  .selector-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .size-node {
+    height: 44px;
+    min-width: 46px;
+    padding: 0 10px;
+    font-size: 0.72rem;
+  }
+
+  .swatch-node {
+    width: 30px;
+    height: 30px;
+  }
+
+  .add-to-basket-btn {
+    height: 54px;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+  }
+
+  .tech-title {
+    font-size: 0.9rem;
+  }
+
+  .tech-list li {
+    font-size: 0.7rem;
+  }
+
+  .detail-spec-panel {
+    gap: 1.1rem;
+  }
+
+  .visual-assurance {
+    gap: 0.875rem 1.5rem;
+  }
+
+  .assurance-node {
+    font-size: 0.65rem;
   }
 }

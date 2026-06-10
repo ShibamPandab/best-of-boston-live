@@ -170,21 +170,150 @@
   font-weight: 500;
 }
 
-/* Tablet & Mobile tweaks */
+/* ============================================================
+   RESPONSIVE SYSTEM — Collections Section
+   ============================================================ */
+
+/* --- 1024px Tablet Landscape --- */
 @media (max-width: 1024px) {
   .collections-section {
     padding: 24px 16px;
   }
   .collections-inner {
-    padding: 24px !important;
+    padding: 32px !important;
+    border-radius: 28px !important;
   }
   .collections-header {
     margin-bottom: 2rem;
   }
+  .section-title {
+    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  }
   .lookbook-card {
-    width: 270px;
+    width: 280px;
   }
   .look-frame {
-    height: 310px;
+    height: 320px;
+  }
+}
+
+/* --- 768px Tablet Portrait --- */
+@media (max-width: 768px) {
+  .collections-section {
+    padding: 20px 12px;
+  }
+  .collections-inner {
+    padding: 24px !important;
+    border-radius: 22px !important;
+  }
+  .collections-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 18px;
+  }
+  .section-desc {
+    max-width: 100%;
+    font-size: 0.78rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+  }
+  .lookbook-card {
+    width: 250px;
+  }
+  .look-frame {
+    height: 285px;
+  }
+  .look-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* --- 480px Large Mobile --- */
+@media (max-width: 480px) {
+  .collections-section {
+    padding: 16px 10px;
+  }
+  .collections-inner {
+    padding: 18px !important;
+    border-radius: 18px !important;
+    overflow: hidden;
+  }
+  .lookbook-card {
+    width: 220px;
+    border-radius: 20px;
+    padding: 12px;
+  }
+  .look-frame {
+    height: 250px;
+    border-radius: 12px;
+  }
+  .look-title {
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+  .lookbook-footer {
+    margin-top: 1.75rem;
+  }
+  .scroll-hint {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* --- 390px iPhone Pro --- */
+@media (max-width: 390px) {
+  .collections-section {
+    padding: 14px 8px;
+  }
+  .collections-inner {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+  .lookbook-card {
+    width: 200px;
+    padding: 10px;
+    gap: 12px;
+  }
+  .look-frame {
+    height: 225px;
+    border-radius: 10px;
+  }
+  .look-title {
+    font-size: 0.95rem;
+  }
+  .lookbook-container {
+    gap: 1.5rem;
+  }
+}
+
+/* --- 320px Minimum --- */
+@media (max-width: 320px) {
+  .collections-section {
+    padding: 12px 6px;
+  }
+  .collections-inner {
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+  .lookbook-card {
+    width: 180px;
+    padding: 9px;
+    border-radius: 16px;
+  }
+  .look-frame {
+    height: 200px;
+  }
+  .look-title {
+    font-size: 0.88rem;
+  }
+  .look-fabric-badge {
+    font-size: 0.58rem;
+    padding: 5px 9px;
+  }
+  .lookbook-container {
+    gap: 1.25rem;
   }
 }

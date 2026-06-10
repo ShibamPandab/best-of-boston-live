@@ -157,17 +157,19 @@
 }
 
 .prod-category {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .prod-rating {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   gap: 4px;
-  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  color: #333333;
 }
 
 .star-icon {
@@ -176,12 +178,13 @@
 }
 
 .prod-name {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 1.05rem;
-  letter-spacing: 0.01em;
+  font-size: 1.08rem;
+  letter-spacing: 0.03em;
   color: var(--text-primary);
   transition: color 0.3s;
+  line-height: 1.25;
 }
 
 .prod-name:hover {
@@ -198,30 +201,220 @@
 .prod-price {
   font-size: 1rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #111111;
 }
 
 .prod-desc-excerpt {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
+  font-size: 0.67rem;
+  color: #606060;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
 }
 
-/* Tablet & Mobile Tweaks */
+/* ============================================================
+   RESPONSIVE SYSTEM — Best Sellers Section
+   Breakpoints: 1440 (base) → 1024 → 768 → 480 → 390 → 320
+   ============================================================ */
+
+/* --- 1024px Tablet Landscape --- */
 @media (max-width: 1024px) {
   .sellers-section {
     padding: 24px 16px;
   }
   .sellers-inner {
-    padding: 24px !important;
+    padding: 32px !important;
+    border-radius: 28px !important;
   }
   .sellers-header {
     margin-bottom: 2.5rem;
   }
-  .prod-img-frame {
-    height: 320px;
+  .sellers-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   }
-  /* Disable hover action overlay on touchscreens */
+  .prod-img-frame {
+    height: 340px;
+  }
+  /* Disable hover overlay on tablet touch screens */
   .prod-actions-overlay {
     display: none !important;
+  }
+}
+
+/* --- 768px Tablet Portrait --- */
+@media (max-width: 768px) {
+  .sellers-section {
+    padding: 20px 12px;
+  }
+  .sellers-inner {
+    padding: 28px !important;
+    border-radius: 24px !important;
+  }
+  .sellers-header {
+    margin-bottom: 2rem;
+  }
+  .sellers-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .prod-img-frame {
+    height: 300px;
+  }
+  .prod-name {
+    font-size: 1rem;
+  }
+  .prod-price {
+    font-size: 0.95rem;
+  }
+}
+
+/* --- 480px Large Mobile --- */
+@media (max-width: 480px) {
+  .sellers-section {
+    padding: 16px 10px;
+  }
+  .sellers-inner {
+    padding: 22px !important;
+    border-radius: 20px !important;
+  }
+  .sellers-header {
+    margin-bottom: 1.75rem;
+  }
+  .sellers-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .prod-img-frame {
+    height: 240px;
+    border-radius: 16px;
+  }
+  .prod-info {
+    gap: 5px;
+  }
+  .prod-name {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+  .prod-category {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .prod-rating {
+    font-size: 0.65rem;
+  }
+  .prod-price {
+    font-size: 0.9rem;
+  }
+  .prod-desc-excerpt {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+  }
+  .badge-limited {
+    font-size: 0.55rem;
+    padding: 3px 8px;
+  }
+}
+
+/* --- 390px iPhone Pro --- */
+@media (max-width: 390px) {
+  .sellers-section {
+    padding: 14px 8px;
+  }
+  .sellers-inner {
+    padding: 18px !important;
+    border-radius: 18px !important;
+  }
+  .sellers-title {
+    font-size: clamp(1.4rem, 7vw, 1.8rem);
+  }
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .prod-img-frame {
+    height: 210px;
+    border-radius: 14px;
+  }
+  .prod-name {
+    font-size: 0.85rem;
+  }
+  .prod-price {
+    font-size: 0.85rem;
+  }
+  .prod-meta-bottom {
+    margin-top: 3px;
+  }
+}
+
+/* --- 375px iPhone SE --- */
+@media (max-width: 375px) {
+  .sellers-inner {
+    padding: 16px !important;
+  }
+  .product-grid {
+    gap: 0.875rem;
+  }
+  .prod-img-frame {
+    height: 195px;
+  }
+  .prod-name {
+    font-size: 0.82rem;
+  }
+  .prod-info {
+    gap: 4px;
+  }
+}
+
+/* --- 320px Minimum --- */
+@media (max-width: 320px) {
+  .sellers-section {
+    padding: 12px 6px;
+  }
+  .sellers-inner {
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+  .sellers-header {
+    margin-bottom: 1.5rem;
+  }
+  .sellers-title {
+    font-size: 1.35rem;
+  }
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .prod-img-frame {
+    height: 175px;
+    border-radius: 12px;
+  }
+  .prod-info {
+    padding: 0 2px;
+    gap: 3px;
+  }
+  .prod-name {
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+  }
+  .prod-category {
+    font-size: 0.54rem;
+  }
+  .prod-rating {
+    font-size: 0.6rem;
+  }
+  .prod-price {
+    font-size: 0.8rem;
+  }
+  .prod-desc-excerpt {
+    font-size: 0.58rem;
+  }
+  .sellers-divider {
+    margin-top: 0.75rem;
   }
 }

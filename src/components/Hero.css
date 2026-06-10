@@ -17,7 +17,7 @@
   border: 1px solid rgba(255, 255, 255, 0.45) !important;
   padding: 48px !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Must be visible to allow floating badge to render outside hero-main-card */
 }
 
 /* Top Meta */
@@ -66,6 +66,8 @@
   align-items: center;
   margin: 2rem 0;
   flex-grow: 1;
+  /* Bottom padding ensures floating badge (which hangs below card) is not clipped */
+  padding-bottom: 30px;
 }
 
 /* Main Card */
@@ -104,60 +106,94 @@
   pointer-events: none;
 }
 
-/* Floating badge over main card */
+/* Floating badge over main card — Premium Frosted Glass Override */
 .card-floating-badge {
   position: absolute;
   bottom: -20px;
   right: -40px;
-  width: 260px;
-  padding: 20px !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08) !important;
+  width: 268px;
+  padding: 22px 24px !important;
+  border-radius: 18px !important;
+
+  /* Dense luxury frosted glass — overrides .glass-container defaults */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(248, 245, 242, 0.74) 100%
+  ) !important;
+  backdrop-filter: blur(48px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(48px) saturate(180%) !important;
+
+  /* Crisp premium edge + inner light reflection */
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.38) !important;
+  border-right-color: rgba(255, 255, 255, 0.38) !important;
+
+  /* Architectural depth shadow */
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.9) inset,
+    0 24px 48px -12px rgba(0, 0, 0, 0.22),
+    0 8px 20px -6px rgba(0, 0, 0, 0.14),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+
   z-index: 10;
 }
 
 .badge-cat {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
   display: block;
+  margin-bottom: 6px;
 }
 
 .badge-title {
-  font-size: 0.95rem;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  margin: 4px 0;
+  font-size: 1.05rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #111111;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
 }
 
 .badge-desc {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-bottom: 12px;
+  font-size: 0.68rem;
+  color: #555555;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  margin-bottom: 14px;
 }
 
 .badge-link {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--text-primary);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #111111;
   display: inline-block;
+  text-transform: uppercase;
 }
 
 /* Organic Floating Accent Cards */
 .hero-floating-card {
   position: absolute;
-  width: 130px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid var(--border-glass);
-  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05);
+  width: 136px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(248, 245, 242, 0.68) 100%
+  );
+  backdrop-filter: blur(36px) saturate(160%);
+  -webkit-backdrop-filter: blur(36px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.85) inset,
+    0 16px 32px -8px rgba(0, 0, 0, 0.18),
+    0 4px 10px -3px rgba(0, 0, 0, 0.10);
   border-radius: 16px;
-  padding: 8px;
+  padding: 9px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -191,17 +227,20 @@
 }
 
 .floating-card-title {
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 500;
-  max-width: 75px;
+  letter-spacing: 0.02em;
+  color: #111111;
+  max-width: 78px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .floating-card-price {
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--accent);
 }
 
@@ -252,40 +291,268 @@
   }
 }
 
-/* Tablet & Mobile Adjustments */
+/* ============================================================
+   RESPONSIVE SYSTEM — Hero Section
+   Breakpoints: 1440 (base) → 1024 → 768 → 480 → 390 → 375 → 320
+   ============================================================ */
+
+/* --- 1024px Laptop & Tablet Landscape --- */
 @media (max-width: 1024px) {
   .hero-section {
-    padding: 100px 16px 24px 16px;
+    padding: 100px 20px 28px 20px;
   }
   .hero-wrapper {
-    padding: 24px !important;
+    padding: 32px !important;
+    border-radius: 28px !important;
+    min-height: calc(100vh - 128px);
   }
   .hero-title {
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
   }
   .hero-center-deck {
-    margin: 3rem 0;
+    margin: 2.5rem 0;
   }
   .hero-main-card {
-    height: 380px;
-    max-width: 320px;
+    height: 400px;
+    max-width: 340px;
   }
+  /* Badge repositioned: centred below card, no negative offsets */
   .card-floating-badge {
     right: 50%;
     transform: translateX(50%);
-    bottom: -35px;
-    width: calc(100% - 32px);
+    bottom: -28px;
+    width: min(320px, calc(100% - 24px));
   }
   .hero-floating-card {
-    display: none; /* Hide accent floaters on small screens for visual clarity */
+    display: none;
   }
   .hero-meta-bottom {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.75rem;
     text-align: center;
+    margin-top: 2.5rem;
   }
   .brand-philosophy {
     max-width: 100%;
+    font-size: 0.82rem;
+  }
+  .scroll-text {
+    font-size: 0.68rem;
+  }
+}
+
+/* --- 768px Tablet Portrait --- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 92px 16px 24px 16px;
+  }
+  .hero-wrapper {
+    padding: 28px !important;
+    border-radius: 24px !important;
+    min-height: calc(100vh - 116px);
+  }
+  .hero-meta-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .editorial-serial {
+    font-size: 0.7rem;
+  }
+  .luxury-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+  .hero-title-container {
+    margin: 1.25rem 0;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    line-height: 1;
+  }
+  .hero-center-deck {
+    margin: 2rem 0;
+  }
+  .hero-main-card {
+    height: 360px;
+    max-width: 300px;
+  }
+  .card-floating-badge {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -26px;
+    width: min(300px, calc(100% - 16px));
+    padding: 18px 20px !important;
+  }
+  .hero-meta-bottom {
+    margin-top: 2.25rem;
+    gap: 1.5rem;
+  }
+  .brand-philosophy {
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+}
+
+/* --- 480px Large Mobile --- */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 88px 12px 20px 12px;
+  }
+  .hero-wrapper {
+    padding: 22px !important;
+    border-radius: 20px !important;
+    min-height: calc(100vh - 108px);
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+    line-height: 1.02;
+  }
+  .hero-title-container {
+    margin: 1rem 0;
+  }
+  .hero-center-deck {
+    margin: 1.75rem 0;
+  }
+  .hero-main-card {
+    height: 320px;
+    max-width: 270px;
+  }
+  .card-floating-badge {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -24px;
+    width: min(280px, calc(100% - 16px));
+    padding: 16px 18px !important;
+    border-radius: 14px !important;
+  }
+  .badge-title {
+    font-size: 0.95rem;
+  }
+  .badge-desc {
+    font-size: 0.64rem;
+    margin-bottom: 10px;
+  }
+  .hero-meta-bottom {
+    margin-top: 2rem;
+    gap: 1.25rem;
+  }
+  .brand-philosophy {
+    font-size: 0.78rem;
+  }
+  .scroll-text {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* --- 390px iPhone Pro --- */
+@media (max-width: 390px) {
+  .hero-section {
+    padding: 84px 10px 18px 10px;
+  }
+  .hero-wrapper {
+    padding: 18px !important;
+    border-radius: 18px !important;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+  .hero-main-card {
+    height: 300px;
+    max-width: 252px;
+  }
+  .card-floating-badge {
+    width: min(256px, calc(100% - 12px));
+    bottom: -22px;
+    padding: 14px 16px !important;
+  }
+  .badge-title {
+    font-size: 0.9rem;
+  }
+  .badge-cat {
+    letter-spacing: 0.14em;
+  }
+  .brand-philosophy {
+    font-size: 0.75rem;
+  }
+}
+
+/* --- 375px iPhone SE / Standard --- */
+@media (max-width: 375px) {
+  .hero-section {
+    padding: 82px 8px 16px 8px;
+  }
+  .hero-wrapper {
+    padding: 16px !important;
+  }
+  .hero-title {
+    font-size: clamp(1.65rem, 9.5vw, 2.3rem);
+  }
+  .hero-main-card {
+    height: 285px;
+    max-width: 240px;
+  }
+  .card-floating-badge {
+    width: min(244px, calc(100% - 10px));
+    bottom: -20px;
+    padding: 13px 15px !important;
+    border-radius: 12px !important;
+  }
+  .badge-title {
+    font-size: 0.85rem;
+  }
+  .hero-meta-bottom {
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+}
+
+/* --- 320px Minimum — No Overflow Guarantee --- */
+@media (max-width: 320px) {
+  .hero-section {
+    padding: 78px 6px 14px 6px;
+  }
+  .hero-wrapper {
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+  .hero-title {
+    font-size: 1.55rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title-container {
+    margin: 0.75rem 0;
+  }
+  .hero-center-deck {
+    margin: 1.5rem 0;
+  }
+  .hero-main-card {
+    height: 260px;
+    max-width: 220px;
+  }
+  .card-floating-badge {
+    width: min(224px, calc(100% - 8px));
+    bottom: -18px;
+    padding: 12px 14px !important;
+  }
+  .badge-title {
+    font-size: 0.82rem;
+  }
+  .badge-desc {
+    font-size: 0.6rem;
+    margin-bottom: 8px;
+  }
+  .badge-link {
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+  }
+  .brand-philosophy {
+    font-size: 0.72rem;
+  }
+  .hero-meta-bottom {
+    margin-top: 1.5rem;
+    gap: 0.875rem;
   }
 }

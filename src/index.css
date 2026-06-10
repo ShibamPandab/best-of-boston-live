@@ -37,6 +37,9 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Global horizontal scroll prevention */
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Premium Scrollbar */
@@ -92,6 +95,28 @@ button {
   box-shadow: var(--glass-shadow);
   border-radius: 40px;
   padding: 40px;
+}
+
+/* Glass stays premium on all screens — only subtle opacity adjustment below 768px */
+@media (max-width: 768px) {
+  .glass-container {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-container {
+    border-radius: 28px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .glass-container {
+    border-radius: 20px;
+    padding: 18px;
+  }
 }
 
 .luxury-tag {
