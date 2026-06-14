@@ -121,6 +121,16 @@ The app will be available at `http://localhost:5173` by default.
 
 ---
 
+## ⚠️ License Notice
+
+**Source code provided for portfolio demonstration purposes only.**
+
+This repository is intended to showcase development, design, and engineering work.
+
+Commercial reuse, redistribution, resale, cloning, or reproduction of this project without explicit written permission is prohibited.
+
+---
+
 <div align="center">
 
 *Crafted with React, GSAP & Framer Motion — a premium frontend showcase project.*
